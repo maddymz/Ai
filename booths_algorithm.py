@@ -11,7 +11,7 @@ def decimal_to_binary(number):
     
     else:
         return format(number, "08b")
-        
+
 #function to add the binary numbers
 def binaryAddition (num1, num2):
     num3 = int(num1,2) + int(num2, 2)
@@ -39,7 +39,8 @@ def boothMultiplication (multiplier, multiplicand, twosComplementM) :
             valueRegisterA = binaryAddition(valueRegisterA , twosComplementM)
             valueRegisterA, valueRegisterQ, lastShiftedBit = binaryShift(valueRegisterA, valueRegisterQ, lastShiftedBit)
     i = i -1
-    print("Final value is : " + valueRegisterA + valueRegisterQ )
+    product = int((valueRegisterA + valueRegisterQ),2)
+    print("Final value is  : " + str(product))
 
 #function to calculate 2's complement 
 def twosComplement(multiplicand, bits):
