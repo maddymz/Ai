@@ -5,7 +5,6 @@ from sysconfig import sys
 
 def max_subarray (array):
     max_sum = -sys.maxsize -1
-    print(-sys.maxsize-1 )
     for i in range(len(array)):
         sum_so_far = 0                                                  #variable to keep track of teh total sum
         for j in range( i, len(array)):
