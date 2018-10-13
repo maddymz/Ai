@@ -2,7 +2,7 @@
 import numpy as np
 from sysconfig import sys
 from numpy import asarray
-
+import timeit as timeit
 
 #function to find the max_cross_subarray
 def find_max_crossing_subarray(array, low, mid, high):
@@ -45,9 +45,11 @@ def find_max_subarray(array, low, high):
 array_list = [1,3,-5,-9,4,9,3,5,7,0,-7,-4,-6]
 array = asarray(array_list)
 array_size = len(array)
+Start = timeit.default_timer()
 low, high, max_sum = find_max_subarray(array, 0, array_size-1)
+End = timeit.default_timer()
 print("The maximum subarray is subarray[{},{}] with sum {}".format(low,high,max_sum))
-        
+print("run time: ", End - Start)
 
 
         

@@ -1,8 +1,9 @@
 #Brute force approach to solve a max subarray problem 
 import time
 from sysconfig import sys
-#function to find max sub-array
+import timeit as timeit
 
+#function to find max sub-array
 def max_subarray (array):
     max_sum = -sys.maxsize -1
     for i in range(len(array)):
@@ -18,8 +19,9 @@ def max_subarray (array):
 
 #variable intialization and function call
 array = [1,3,-5,-9,4,9,3,5,7,0,-7,-4,-6]
-
+Start = timeit.default_timer()
 low_index,high_index,subarray_max_sum = max_subarray(array)
+End = timeit.default_timer()
 print("Max subarray is array[{},{}] with sum {}".format(low_index, high_index, subarray_max_sum))
-
+print("RUn time : ", End - Start)
 
