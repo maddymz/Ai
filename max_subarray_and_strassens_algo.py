@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
+import unittest 
 from sysconfig import sys
 from numpy import asarray
 
@@ -245,7 +246,7 @@ def power_of_matrix_navie(A, k):
 # # function using divide and conqure to calculate the product
 
 
-def power(A, k):
+def calculate_power(A, k):
  
     if(k == 0):   # base case                                                                   
         matrix = [[0 for row in range(len(A))] for col in range(len(A))]
@@ -255,11 +256,11 @@ def power(A, k):
 
     if(k == 1):
         return A
-    temp = power(A, k // 2)
+    product = calculate_power(A, k // 2)
     if (k % 2 == 0):
-        return square_matrix_multiply_strassens(temp, temp)
+        return square_matrix_multiply_strassens(product, product)
     else:
-        return square_matrix_multiply_strassens(A, square_matrix_multiply_strassens(temp, temp))
+        return square_matrix_multiply_strassens(A, square_matrix_multiply_strassens(product, product))
 
 # # fucntion to calculate the product using divide and conqure
 
@@ -269,7 +270,7 @@ def power_of_matrix_divide_and_conquer(A, k):
     Return A^k.
     time complexity = O(log k)
     """ 
-    product = power(A, k)
+    product = calculate_power(A, k)
     return product
 
 # # variable intialization and function call
@@ -286,6 +287,28 @@ print("Product of matrix using divide and conqure: ", product_divide_n_conqure)
 print("Product of matrix using naive approach: ", product_naive)
 # #==============================================================
 
+class helper_functions(unittest.TestCase):
+    def test_add_matrix(self):
+        matrix_x = [[0, 1], [0, 1]]
+        matrix_y = [[0, 1], [0, 1]]
+        array_x = asarray(matrix_x)
+        array_y = asarray(matrix_y)
+        self.assertEqual(add_matrix(array_x, array_y), [[0, 2], [0, 2]])
+    
+    def test_create_new_matrix(self):
+        self.assertEqual(create_new_matrix(2,2), [[0, 0], [0, 0]])
+    
+    def test_subtract_matirx(self):
+        matrix_x =[[2, 3], [4, 5]]
+        matrix_y =[[4, 6], [3, 9]]
+        array_x = asarray(matrix_x)
+        array_y = asarray(matrix_y)
+        self.assertEqual(sub_matrix(array_x, array_y), [[-2, -3], [1, -4]])
+    
+    def test_split(self):
+        matrix_x = [[1, 2], [3, 4]]
+        array_x = asarray(matrix_x)
+        self.assertEqual(split(array_x), ([[1]], [[2]], [[3]], [[4]]))
 
 def test():
     assert(find_significant_energy_increase_brute(ENERGY_LEVEL) == (7, 11))
@@ -303,4 +326,5 @@ def test():
 if __name__ == '__main__':
 
     test()
+    unittest.main()
 # #==============================================================
